@@ -1,0 +1,478 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('fonts/Geist[wght].ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('fonts/BebasNeue-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, p {
+    margin: 0px;
+    line-height: 1;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Geist", "Arial";
+    color: #fff;
+    background: linear-gradient(135deg, rgba(25, 132, 198, 0.64), rgba(181, 25, 198, 0.64));
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.submit_btn{
+    height: 40px;
+    border: none;
+    font-family: "Geist";
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgb(255, 255, 255);
+    border-radius: 16px;
+    transition: box-shadow 0.2s ease;
+}
+
+.submit_btn:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.8);
+}
+
+/* Auth */
+
+.auth_container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    gap: 16px;
+    width: 400px;
+    border-radius: 20px;
+    padding: 40px;
+    background: linear-gradient(135deg, #fff 0%,rgb(103, 184, 255) 10%, rgb(16, 143, 255, 0.8) 40%, rgba(34, 141, 234, 0.8) 50%, rgba(37, 153, 254, 0.8) 60%, rgb(103, 184, 255) 90%, #fff 100%);
+    border-radius: 16px;
+    box-shadow: 0px 0px 20px 0px #ffffff95;
+}
+
+.auth_header{
+    font-size: 24px;
+}
+
+.auth_form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth_section{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.auth_section a{
+    font-size: 14px;
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.auth_section a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(94%) translateX(-100%) ;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: transform 0.2s ease-out;
+}
+
+.auth_section a:hover::after{
+    transform: translateX(0%) translateY(94%);
+}
+
+.auth_section input{
+    padding: 12px 10px;
+    border-radius: 4px;
+    border: 0px;
+    background-color: #ffffff;
+}
+
+.login{
+    position: relative;
+    overflow: hidden;
+}
+
+.login::after{
+    content: 'Entrar';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: transform 0.2s ease-out;
+}
+
+.login::before{
+    content: 'Entrar';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-out;
+}
+
+.login:hover::after{
+    transform: translateY(-100%);
+}
+
+.login:hover::before{
+    transform: translateY(0%);
+}
+
+.signup{
+    position: relative;
+    overflow: hidden;
+}
+
+.signup::after{
+    content: 'Registrar';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: transform 0.2s ease-out;
+}
+
+.signup::before{
+    content: 'Registrar';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-out;
+}
+
+.signup:hover::after{
+    transform: translateY(-100%);
+}
+
+.signup:hover::before{
+    transform: translateY(0%);
+}
+
+.auth_section input:focus{
+    outline: none;
+}
+
+.fgrt_pass{
+    position: relative;
+    overflow: hidden;
+}
+
+.fgrt_pass::after{
+    content: 'Recuperar Senha';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: transform 0.2s ease-out;
+}
+
+.fgrt_pass::before{
+    content: 'Recuperar Senha';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-out;
+}
+
+.fgrt_pass:hover::after{
+    transform: translateY(-100%);
+}
+
+.fgrt_pass:hover::before{
+    transform: translateY(0%);
+}
+
+.auth_section input::placeholder{
+    color: #000000;
+    opacity: 0.32;
+    font-size: 14px;
+}
+
+.auth_section label{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.80);
+}
+
+.division_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: rgb(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.divisor{
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.8), rgba(34, 141, 234, 0.4));
+}
+
+.divisor:nth-child(1){
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(34, 141, 234, 0.4));
+}
+
+.useful_buttons_container{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.useful_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(to right, rgba(77, 210, 195, 0.20), rgba(106, 77, 210, 0.20), rgba(210, 77, 195, 0.20));
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgb(25, 103, 198, 0.4);
+    border-radius: 16px;
+    border: 0px;
+    color: #fff;
+    height: 48px;
+    width: 200px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Geist";
+    transition: filter 0.2s ease-out, box-shadow 0.2s ease-out, letter-spacing 0.2s ease-out, transform 0.4s ease-out;
+}
+
+.useful_btn:hover{
+    filter: brightness(2);
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    letter-spacing: 0.4px;
+}
+.useful_btn:hover svg{
+    filter: brightness(1);
+}
+
+.below_action{
+    justify-content: center;
+    margin-top: 16px;
+    overflow: hidden;
+    display: flex;
+    gap: 4px;
+}
+
+.below_action a{
+    position: relative;
+    font-weight: 600;
+}
+
+.below_action a::after{
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    transform: translateX(-110%) translateY(94%);
+    transition: transform 0.2s ease-out;
+}
+
+.below_action a:hover::after{
+    transform: translateX(0%) translateY(94%);
+}
+
+.hide_action{
+    width: fit-content;
+    overflow: hidden;
+}
+
+.pass_label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.pass_info {
+    position: relative;
+}
+
+.pass_info svg {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.pass_tip{
+    position: absolute;
+    left: 8px;
+    top: 0px;
+    padding: 12px 8px;
+    background: rgba(25, 132, 198, 0.32);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    visibility: hidden;
+    color: #fff;
+    border: 1px solid rgb(25, 103, 198, 0.4);
+    z-index: 99;
+    width: 272px;
+}
+
+.pass_tip .header{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.pass_info:hover .pass_tip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.functions_container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+}
+
+.back_home{
+    position: absolute;
+    top: 32px;
+    left: 180px;
+    display: flex;
+    color: rgb(255, 255, 255, 0.9);
+    gap: 2px;
+    align-items: center;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+
+.back_home svg{
+    stroke: rgb(255, 255, 255, 0.9);
+}
+
+.back_home:hover{
+    color: #fff;
+}
+
+.back_home:hover svg{
+    stroke: #fff;
+}
+
+.home_content{
+    overflow: hidden;
+    padding: 60px 0px 30px 0px;
+}
+
+.home_content_header{
+    overflow: hidden;
+}
+
+.home_content h1{
+    font-family: "Bebas Neue";
+    letter-spacing: 1px;
+    font-size: 80px;
+    text-align: center;
+    max-width: 780px;
+    overflow: hidden;
+}
+
+.home_content h1{
+    scale: 1;
+}
+
+
+.home_content h4{
+    font-family: "Bebas Neue";
+    letter-spacing: 1px;
+    font-size: 32px;
+    text-align: center;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.home_content h5{
+    font-family: "Bebas Neue";
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #2b2828;
+    text-align: center;
+    opacity: 0.9;
+}

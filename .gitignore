@@ -1,0 +1,19 @@
+# env
+.env
+.env.*
+
+# python
+__pycache__/
+*.pyc
+
+# virtualenv
+.venv/
+venv/
+
+# flask
+instance/
+*.sqlite3
+*.db
+
+# OS
+.DS_Store

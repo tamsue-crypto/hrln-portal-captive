@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body class="home_page">
+    {% if logged %}
+        <div class="home_content">
+            <p>DEU!! Bem vindo {{user.name}}</p>
+            <a href="{{url_for('logout')}}" type="submit">logout</a>
+        </div>
+    {% else %}
+    <div class="home_content">
+        <div class="home_content_header">
+            <h4>Seja bem vindo ao</h4>
+            <h1>
+                <span>Hospital</span>
+                <span>Regional</span>
+                <span>Do</span>
+                <span>Litoral</span>
+                <span>Norte</span>
+            </h1>
+            <h5>Rua Prudência Sanches Froile Mansano, 1200, Caraguatatuba, SP</h5>
+        </div>
+
+        <div class="functions_container">
+            <a type="submit" href="{{url_for('login')}}" class="useful_btn">Fazer Login</a>
+            <a type="submit" href="{{url_for('signup')}}" class="useful_btn">Inscreva-se</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js"></script>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>

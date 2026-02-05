@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueci minha senha</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div style="margin: auto 0;">
+        <div class="auth_container">
+                <div class="auth_header">
+                    <h2>Complete seu cadastro</h2>
+                </div>
+
+                <form method="POST" class="auth_form">
+                    <div class="auth_section">
+                    <label for="username">Nome</label>
+                        <input type="text" id="username" name="username"
+                        value="{{ user.name }}" disabled>
+                    </div>
+
+                    <div style="display: flex; gap: 8px; justify-content: space-between;">
+                        <div class="auth_section">
+                            <label for="cpf">Cpf</label>
+                            <input type="text" id="cpf" name="cpf" inputmode="numeric" autocomplete="off" maxlength="14"
+                                placeholder="{% if errors.cpf %}{{ errors.cpf }}{% else %}xxx.xxx.xxx-xx{% endif %}"
+                                value="{% if not errors.cpf %}{{ request.form.cpf }}{% endif %}" required>
+                        </div>
+
+                        <div class="auth_section">
+                            <label for="birthday">Data de Nascimento</label>
+                            <input type="text" id="birthday" name="birthday" inputmode="numeric" autocomplete="off" maxlength="10"
+                                placeholder="{% if errors.bday %}{{ errors.bday }}{% else %}dd/mm/aaaa{% endif %}"
+                                value="{% if not errors.bday %}{{ request.form.birthday }}{% endif %}" required>
+                        </div>
+                    </div>
+
+                    <div class="auth_section">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email"
+                            value="{{ user.email }}" disabled>
+                    </div>
+
+                    <div style="display: flex; gap: 8px; justify-content: space-between;">
+                        <div class="auth_section">
+                            <label for="password" style="display: flex; gap: 4px; align-items: center;" class="pass_label">
+                                Senha
+                                <span class="pass_info">
+                                    <svg width="14" height="14" viewBox="0 0 800 800" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M400 0C620.913 0 800 179.084 800 400C800 620.913 620.913 800 400 800C179.087 800 0 620.913 0 400C0 179.084 179.087 0 400 0ZM399.998 530C372.383 530 349.998 552.385 349.998 580C349.998 607.615 372.383 630 399.998 630C427.612 630 449.998 607.615 449.998 580C449.998 552.385 427.612 530 399.998 530ZM393.325 175.002C354.39 175.002 321.665 185.61 295.19 206.765C263.818 232.107 248.144 269.534 248.144 319.075H333.198V318.504C333.198 299.602 337.18 284.097 345.122 272.004C356.084 255.747 373.862 247.612 398.44 247.612C413.564 247.612 426.438 251.582 437.007 259.509C450.234 270.493 456.87 287.119 456.87 309.429C456.87 323.423 453.45 335.894 446.653 346.865C440.979 356.694 431.907 366.328 419.412 375.788C392.947 393.935 375.74 411.899 367.81 429.68C361.003 444.426 357.583 467.869 357.583 500H437.58C437.58 478.821 440.395 462.949 446.094 452.358C450.622 443.66 460.086 434.404 474.456 424.566C499.422 406.03 517.178 388.821 527.774 372.94C540.623 354.041 547.063 331.912 547.063 306.57C547.063 254.053 525.703 216.799 482.947 194.856C457.248 181.628 427.376 175.002 393.325 175.002Z"
+                                            fill="white" />
+                                    </svg>
+
+                                    <ul class="pass_tip">
+                                        <li class="header">Dicas de segurança</li>
+                                        <li>Mínimo de 8 caracteres</li>
+                                        <li>Combine letras, números e símbolos</li>
+                                        <li>Evite dados pessoais</li>
+                                        <li>Não reutilize senhas antigas</li>
+                                    </ul>
+                                </span>
+                            </label>
+                            <input type="password" id="password" name="password" value=""
+                                placeholder="{% if errors.pass %}{{ errors.pass }}{% else %}Digite sua senha{% endif %}" required>
+                        </div>
+
+                        <div class="auth_section">
+                            <label for="confirm">Confirme sua senha</label>
+                            <input type="password" id="confirm" name="confirm" placeholder="Confirme sua senha" value="" required>
+                        </div>
+                    </div>
+
+                    <div class="divisor"></div>
+
+                    <div class="auth_section">
+                        <button type="submit" class="submit_btn signup"></button>
+                    </div>
+                </form>
+        </div>
+    </div>
+
+    <script>
+        const dateInput = document.getElementById("birthday");
+
+        dateInput.addEventListener("input", () => {
+            let value = dateInput.value.replace(/\D/g, "");
+            value = value.slice(0, 8);
+
+            if (value.length > 4) {
+                value = value.replace(/^(\d{2})(\d{2})(\d{0,4}).*/, "$1/$2/$3");
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,2}).*/, "$1/$2");
+            }
+
+            dateInput.value = value;
+        });
+
+        const cpfInput = document.getElementById("cpf");
+
+            cpfInput.addEventListener("input", () => {
+                let value = cpfInput.value.replace(/\D/g, ""); // remove tudo que não é número
+
+                value = value.slice(0, 11); // limite CPF
+
+                if (value.length > 9) {
+                    value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{0,2}).*/, "$1.$2.$3-$4");
+                } else if (value.length > 6) {
+                    value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, "$1.$2.$3");
+                } else if (value.length > 3) {
+                    value = value.replace(/^(\d{3})(\d{0,3}).*/, "$1.$2");
+                }
+
+                cpfInput.value = value;
+            });
+    </script>
+</body>
+</html>

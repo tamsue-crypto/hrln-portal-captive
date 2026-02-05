@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="back_home">
+        <svg width="24" height="24" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M200 400H600M200 400L366.667 233.333M200 400L366.667 566.667" stroke-width="60"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <a type="submit" href="{{url_for('index')}}">Home</a>
+    </div>
+        <div class="auth_container">
+            <div class="auth_header">
+                <h2>Acesse a internet</h2>
+            </div>
+            <form method="POST" class="auth_form">
+                <div class="auth_section">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required 
+                        placeholder="{% if email_error %}Insira um e-mail válido!{% else %}nome@email.com{% endif %}"    
+                        value="">
+                </div>
+
+                <div class="auth_section">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required
+                        placeholder="{% if pass_error %}Senha incorreta{% else %}Digite sua senha{% endif %}"
+                        value="">
+                    <a href="{{url_for('forgot_password')}}" type="submit">Esqueci a senha</a>
+                </div>
+                
+                <div class="auth_section">
+                    <button type="submit" class="submit_btn login"></button>
+                </div>
+            </form>
+
+            <div class="division_container">
+                <div class="divisor"></div>
+                <span>OU</span>
+                <div class="divisor"></div>
+            </div>
+
+            <div class="useful_buttons_container">
+                <a type="submit" class="useful_btn" href="{{url_for('signup')}}">
+                    <svg width="14" height="14" viewBox="0 0 806 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M402.897 0.000671741C301.567 -0.184426 203.901 37.8893 129.432 106.608C54.9629 175.326 9.17954 269.624 1.2378 370.643C-6.70393 471.661 23.7814 571.955 86.5973 651.466C149.413 730.978 239.929 783.845 340.044 799.497V518.416H237.97V402.263H340.044V313.765C340.044 212.697 399.88 157.386 491.898 157.386C536.147 157.386 581.904 165.431 581.904 165.431V264.488H531.118C481.338 264.488 465.751 295.664 465.751 327.342V402.766H577.379L559.78 518.919H466.254V800C658.334 769.83 805.662 603.394 805.662 402.766C805.16 180.013 625.147 0.000671741 402.897 0.000671741Z"
+                            fill="white" />
+                    </svg>
+                    Entrar com Facebook
+                </a>
+                <a type="submit" class="useful_btn" href="{{url_for('login_google')}}">
+                    <svg width="14" height="14" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M400 158.333C459 158.333 511.833 178.667 553.5 218.333L667.666 104.167C598.333 39.6667 507.833 0 400 0C243.667 0 108.5 89.6667 42.6665 220.333L175.666 323.5C207.166 228.667 295.666 158.333 400 158.333Z"
+                            fill="#EA4335" />
+                        <path
+                            d="M783 409.167C783 383 780.5 357.667 776.667 333.333H400V483.667H615.667C606 533 578 575 536 603.333L664.833 703.333C740 633.667 783 530.667 783 409.167Z"
+                            fill="#4285F4" />
+                        <path
+                            d="M175.5 476.5C167.5 452.333 162.833 426.667 162.833 400C162.833 373.333 167.333 347.667 175.5 323.5L42.5 220.333C15.3333 274.333 0 335.333 0 400C0 464.667 15.3333 525.667 42.6667 579.667L175.5 476.5Z"
+                            fill="#FBBC05" />
+                        <path
+                            d="M400 800C508 800 598.833 764.5 664.833 703.167L536 603.167C500.167 627.333 454 641.5 400 641.5C295.667 641.5 207.167 571.167 175.5 476.333L42.5 579.5C108.5 710.333 243.667 800 400 800Z"
+                            fill="#34A853" />
+                    </svg>
+                    Entrar com Google
+                </a>
+            </div>
+        </div>
+        <span class="below_action">Não tem conta?
+            <div class="hide_action">
+                <a type="submit" href="{{url_for('signup')}}">Inscreva-se</a>
+            </div>
+        </span>
+</body>
+</html>
