@@ -70,6 +70,20 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(255), nullable = False)
     birthday = db.Column(db.Date, nullable=False)
 
+with app.app_context():
+    db.create_all()
+    if os.environ.get("CREATE_ADMIN") == "1":
+        if not User.query.filter_by(email=os.environ.get("ADMIN_EMAIL")).first():
+            user = User(
+                name="Mateus",
+                email=os.environ.get("ADMIN_EMAIL"),
+                cpf="00000000000",
+                birthday=date(1990, 1, 1),
+                password=generate_password_hash(os.environ.get("ADMIN_PASSWORD"))
+            )
+            db.session.add(user)
+            db.session.commit()
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -368,21 +382,3 @@ def complete_signup():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
-def create_tables():
-    with app.app_context():
-        db.create_all()
-
-        if not User.query.filter_by(email="mateusbarros45@yahoo.com").first():
-            user = User(
-                name="Mateus",
-                email="mateusbarros45@yahoo.com",
-                cpf="00000000000",
-                birthday=date(1990, 1, 1),
-                password=generate_password_hash("Senha123!")
-            )
-            db.session.add(user)
-            db.session.commit()
-
-if __name__ == "__main__":
-    create_tables()
