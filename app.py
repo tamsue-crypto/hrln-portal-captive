@@ -106,7 +106,6 @@ def is_strong_password(password):
         re.search(r"[^A-Za-z0-9]", password)
     )
 
-
 # == Routes ==
 @app.route("/")
 def index():
@@ -229,7 +228,11 @@ Em link expira em 15 minutos.
 """
         )
 
-        mail.send(msg)
+        try:
+            mail.send(msg)
+        except Exception as e:
+            print(e)
+            return "Erro ao enviar email", 500
 
         return render_template("forgot_pass.html", success=True)
     return render_template("forgot_pass.html")
