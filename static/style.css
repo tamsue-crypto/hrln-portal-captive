@@ -476,3 +476,34 @@ a {
     text-align: center;
     opacity: 0.9;
 }
+
+.open_terms {
+    opacity: 0.9;
+    color: #2b2828;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.open_terms::before{
+    opacity: 0.9;
+    content: '';
+    background-color: #2b2828;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform 0.2s ease-out;
+    transform: translateY(92%) translateX(-104%);
+}
+
+.open_terms:hover::before{
+    transform: translateY(92%) translateX(0%);
+}
+
+.checkbox_terms{
+    border-radius: 0px;
+    height: 16px;
+    width: 16px;
+}
